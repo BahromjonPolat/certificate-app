@@ -16,8 +16,8 @@ import 'package:common_models/common_models.dart';
 import 'package:dart_frog/dart_frog.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../src/components/responses.dart';
-import '../../../src/validators/certificate_validator.dart';
+import '../../../../src/components/responses.dart';
+import '../../../../src/validators/certificate_validator.dart';
 
 Future<Response> onRequest(RequestContext context) async {
   final body = await context.request.body();
@@ -30,7 +30,21 @@ Future<Response> onRequest(RequestContext context) async {
   }
 
   final employee = await context.read<Future<Employee>>();
-
   final id = const Uuid().v4();
-  return Response.json();
+
+  final certificate = CertificateModel(
+    id: id,
+    from: json['from'] as int,
+    to: json['to'] as int,
+    price: json['price'] as int,
+    uniqueCode: id,
+    createdBy: employee.id,
+    createdAt: DateTime.now().millisecondsSinceEpoch,
+    enable: true,
+  );
+
+  final box = HiveBoxes.certificateBox;
+  await box.put(id, certificate);
+
+  return AppResponse.success(body: certificate.toJson());
 }

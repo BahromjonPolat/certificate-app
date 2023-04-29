@@ -1,7 +1,7 @@
 /*
 
   Created by: Bakhromjon Polat
-  Created on: Apr 29 2023 20:35:37
+  Created on: Apr 29 2023 21:29:01
   Github:   https://github.com/BahromjonPolat
   Leetcode: https://leetcode.com/BahromjonPolat/
   LinkedIn: https://linkedin.com/in/bahromjon-polat
@@ -10,3 +10,10 @@
   Documentation: 
 
 */
+import 'package:dart_frog/dart_frog.dart';
+
+import '../../../../src/middleware/http_methods_middleware.dart';
+
+Handler middleware(Handler handler) {
+  return handler.use(onGetRequestMiddleware);
+}
