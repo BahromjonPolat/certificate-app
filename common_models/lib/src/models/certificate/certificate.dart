@@ -28,6 +28,8 @@ class CertificateModel with _$CertificateModel {
     @HiveField(4) @Default(0) int usedDate,
     @HiveField(5) @Default('') String confirmedEmployeeId,
     @HiveField(6) @Default('') String confirmedBranchId,
+    @HiveField(7) @Default('') String createdBy,
+    @HiveField(8) @Default(0) int createdAt,
   }) = _CertificateModel;
 
   factory CertificateModel.fromJson(Map<String, dynamic> json) =>

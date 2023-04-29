@@ -33,9 +33,17 @@ mixin _$BranchModel {
   @HiveField(2)
   set address(String value) => throw _privateConstructorUsedError;
   @HiveField(3)
-  String get country => throw _privateConstructorUsedError;
+  String get city => throw _privateConstructorUsedError;
   @HiveField(3)
-  set country(String value) => throw _privateConstructorUsedError;
+  set city(String value) => throw _privateConstructorUsedError;
+  @HiveField(4)
+  String get createdBy => throw _privateConstructorUsedError;
+  @HiveField(4)
+  set createdBy(String value) => throw _privateConstructorUsedError;
+  @HiveField(5)
+  int get createdAt => throw _privateConstructorUsedError;
+  @HiveField(5)
+  set createdAt(int value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +61,9 @@ abstract class $BranchModelCopyWith<$Res> {
       {@HiveField(0) String id,
       @HiveField(1) String name,
       @HiveField(2) String address,
-      @HiveField(3) String country});
+      @HiveField(3) String city,
+      @HiveField(4) String createdBy,
+      @HiveField(5) int createdAt});
 }
 
 /// @nodoc
@@ -72,7 +82,9 @@ class _$BranchModelCopyWithImpl<$Res, $Val extends BranchModel>
     Object? id = null,
     Object? name = null,
     Object? address = null,
-    Object? country = null,
+    Object? city = null,
+    Object? createdBy = null,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -87,10 +99,18 @@ class _$BranchModelCopyWithImpl<$Res, $Val extends BranchModel>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
-      country: null == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
+      city: null == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
               as String,
+      createdBy: null == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -107,7 +127,9 @@ abstract class _$$_BranchModelCopyWith<$Res>
       {@HiveField(0) String id,
       @HiveField(1) String name,
       @HiveField(2) String address,
-      @HiveField(3) String country});
+      @HiveField(3) String city,
+      @HiveField(4) String createdBy,
+      @HiveField(5) int createdAt});
 }
 
 /// @nodoc
@@ -124,7 +146,9 @@ class __$$_BranchModelCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? address = null,
-    Object? country = null,
+    Object? city = null,
+    Object? createdBy = null,
+    Object? createdAt = null,
   }) {
     return _then(_$_BranchModel(
       id: null == id
@@ -139,10 +163,18 @@ class __$$_BranchModelCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
-      country: null == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
+      city: null == city
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
               as String,
+      createdBy: null == createdBy
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -154,7 +186,9 @@ class _$_BranchModel implements _BranchModel {
       {@HiveField(0) this.id = '',
       @HiveField(1) this.name = '',
       @HiveField(2) this.address = '',
-      @HiveField(3) this.country = ''});
+      @HiveField(3) this.city = '',
+      @HiveField(4) this.createdBy = '',
+      @HiveField(5) this.createdAt = 0});
 
   factory _$_BranchModel.fromJson(Map<String, dynamic> json) =>
       _$$_BranchModelFromJson(json);
@@ -174,11 +208,19 @@ class _$_BranchModel implements _BranchModel {
   @override
   @JsonKey()
   @HiveField(3)
-  String country;
+  String city;
+  @override
+  @JsonKey()
+  @HiveField(4)
+  String createdBy;
+  @override
+  @JsonKey()
+  @HiveField(5)
+  int createdAt;
 
   @override
   String toString() {
-    return 'BranchModel(id: $id, name: $name, address: $address, country: $country)';
+    return 'BranchModel(id: $id, name: $name, address: $address, city: $city, createdBy: $createdBy, createdAt: $createdAt)';
   }
 
   @JsonKey(ignore: true)
@@ -200,7 +242,9 @@ abstract class _BranchModel implements BranchModel {
       {@HiveField(0) String id,
       @HiveField(1) String name,
       @HiveField(2) String address,
-      @HiveField(3) String country}) = _$_BranchModel;
+      @HiveField(3) String city,
+      @HiveField(4) String createdBy,
+      @HiveField(5) int createdAt}) = _$_BranchModel;
 
   factory _BranchModel.fromJson(Map<String, dynamic> json) =
       _$_BranchModel.fromJson;
@@ -222,9 +266,19 @@ abstract class _BranchModel implements BranchModel {
   set address(String value);
   @override
   @HiveField(3)
-  String get country;
+  String get city;
   @HiveField(3)
-  set country(String value);
+  set city(String value);
+  @override
+  @HiveField(4)
+  String get createdBy;
+  @HiveField(4)
+  set createdBy(String value);
+  @override
+  @HiveField(5)
+  int get createdAt;
+  @HiveField(5)
+  set createdAt(int value);
   @override
   @JsonKey(ignore: true)
   _$$_BranchModelCopyWith<_$_BranchModel> get copyWith =>

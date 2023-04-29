@@ -58,7 +58,7 @@ Future<Response> onRequest(RequestContext context) async {
     updatedAt: now,
     lastSeen: now,
     password: BCrypt.hashpw(password.toString(), BCrypt.gensalt()),
-    role: 'employee',
+    role: 'admin',
     name: decoded['name'].toString(),
     phone: phone.toString(),
   );

@@ -24,7 +24,9 @@ class BranchModel with _$BranchModel {
     @HiveField(0) @Default('') String id,
     @HiveField(1) @Default('') String name,
     @HiveField(2) @Default('') String address,
-    @HiveField(3) @Default('') String country,
+    @HiveField(3) @Default('') String city,
+    @HiveField(4) @Default('') String createdBy,
+    @HiveField(5) @Default(0) int createdAt,
   }) = _BranchModel;
 
   factory BranchModel.fromJson(Map<String, dynamic> json) =>

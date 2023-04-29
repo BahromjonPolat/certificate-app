@@ -20,14 +20,16 @@ class BranchModelAdapter extends TypeAdapter<BranchModel> {
       id: fields[0] as String,
       name: fields[1] as String,
       address: fields[2] as String,
-      country: fields[3] as String,
+      city: fields[3] as String,
+      createdBy: fields[4] as String,
+      createdAt: fields[5] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, BranchModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -35,7 +37,11 @@ class BranchModelAdapter extends TypeAdapter<BranchModel> {
       ..writeByte(2)
       ..write(obj.address)
       ..writeByte(3)
-      ..write(obj.country);
+      ..write(obj.city)
+      ..writeByte(4)
+      ..write(obj.createdBy)
+      ..writeByte(5)
+      ..write(obj.createdAt);
   }
 
   @override
@@ -58,7 +64,9 @@ _$_BranchModel _$$_BranchModelFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String? ?? '',
       name: json['name'] as String? ?? '',
       address: json['address'] as String? ?? '',
-      country: json['country'] as String? ?? '',
+      city: json['city'] as String? ?? '',
+      createdBy: json['createdBy'] as String? ?? '',
+      createdAt: json['createdAt'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_BranchModelToJson(_$_BranchModel instance) =>
@@ -66,5 +74,7 @@ Map<String, dynamic> _$$_BranchModelToJson(_$_BranchModel instance) =>
       'id': instance.id,
       'name': instance.name,
       'address': instance.address,
-      'country': instance.country,
+      'city': instance.city,
+      'createdBy': instance.createdBy,
+      'createdAt': instance.createdAt,
     };

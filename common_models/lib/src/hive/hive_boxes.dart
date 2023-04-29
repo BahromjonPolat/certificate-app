@@ -16,6 +16,6 @@ import 'package:hive/hive.dart';
 class HiveBoxes {
   const HiveBoxes._();
   static final Box<Employee> employeeBox = Hive.box('employee');
-  static final Box<Employee> certificateBox = Hive.box('certificate');
-  static final Box<Employee> branchBox = Hive.box('branch');
+  static final Box<CertificateModel> certificateBox = Hive.box('certificate');
+  static final Box<BranchModel> branchBox = Hive.box('branch');
 }
