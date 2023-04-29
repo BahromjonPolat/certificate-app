@@ -1,6 +1,8 @@
-// TODO: Put public facing types in this file.
+import 'package:common_models/src/hive/hive_service.dart';
 
-/// Checks if you are awesome. Spoiler: you are.
-class Awesome {
-  bool get isAwesome => true;
+class CommonModels {
+  CommonModels._();
+
+  static final CommonModels instance = CommonModels._();
+  final HiveService hive = HiveService.instance;
 }

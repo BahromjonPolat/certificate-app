@@ -44,9 +44,9 @@ mixin _$CertificateModel {
   String get confirmedEmployeeId => throw _privateConstructorUsedError;
   @HiveField(5)
   set confirmedEmployeeId(String value) => throw _privateConstructorUsedError;
-  @HiveField(5)
+  @HiveField(6)
   String get confirmedBranchId => throw _privateConstructorUsedError;
-  @HiveField(5)
+  @HiveField(6)
   set confirmedBranchId(String value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -68,7 +68,7 @@ abstract class $CertificateModelCopyWith<$Res> {
       @HiveField(3) bool enable,
       @HiveField(4) int usedDate,
       @HiveField(5) String confirmedEmployeeId,
-      @HiveField(5) String confirmedBranchId});
+      @HiveField(6) String confirmedBranchId});
 }
 
 /// @nodoc
@@ -140,7 +140,7 @@ abstract class _$$_CertificateModelCopyWith<$Res>
       @HiveField(3) bool enable,
       @HiveField(4) int usedDate,
       @HiveField(5) String confirmedEmployeeId,
-      @HiveField(5) String confirmedBranchId});
+      @HiveField(6) String confirmedBranchId});
 }
 
 /// @nodoc
@@ -205,7 +205,7 @@ class _$_CertificateModel implements _CertificateModel {
       @HiveField(3) this.enable = false,
       @HiveField(4) this.usedDate = 0,
       @HiveField(5) this.confirmedEmployeeId = '',
-      @HiveField(5) this.confirmedBranchId = ''});
+      @HiveField(6) this.confirmedBranchId = ''});
 
   factory _$_CertificateModel.fromJson(Map<String, dynamic> json) =>
       _$$_CertificateModelFromJson(json);
@@ -236,7 +236,7 @@ class _$_CertificateModel implements _CertificateModel {
   String confirmedEmployeeId;
   @override
   @JsonKey()
-  @HiveField(5)
+  @HiveField(6)
   String confirmedBranchId;
 
   @override
@@ -266,7 +266,7 @@ abstract class _CertificateModel implements CertificateModel {
       @HiveField(3) bool enable,
       @HiveField(4) int usedDate,
       @HiveField(5) String confirmedEmployeeId,
-      @HiveField(5) String confirmedBranchId}) = _$_CertificateModel;
+      @HiveField(6) String confirmedBranchId}) = _$_CertificateModel;
 
   factory _CertificateModel.fromJson(Map<String, dynamic> json) =
       _$_CertificateModel.fromJson;
@@ -302,9 +302,9 @@ abstract class _CertificateModel implements CertificateModel {
   @HiveField(5)
   set confirmedEmployeeId(String value);
   @override
-  @HiveField(5)
+  @HiveField(6)
   String get confirmedBranchId;
-  @HiveField(5)
+  @HiveField(6)
   set confirmedBranchId(String value);
   @override
   @JsonKey(ignore: true)
