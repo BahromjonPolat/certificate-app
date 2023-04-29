@@ -13,18 +13,18 @@
 
 class AppValidator {
   const AppValidator._();
-  static String? email(dynamic value) {
+  static String? phone(dynamic value) {
     if (value == null) {
-      return 'Email can not be null';
+      return 'phone can not be null';
     }
 
     if (value is! String) {
-      return 'Email must be String';
+      return 'phone must be String';
     }
     if (value.isEmpty) {
-      return 'Email can not be empty';
-    } else if (!RegExp(_emailPattern).hasMatch(value)) {
-      return '$value is not a valid email';
+      return 'phone can not be empty';
+    } else if (!RegExp(r'^\+998\d{9}$').hasMatch(value)) {
+      return '$value is not a valid phone';
     }
     return null;
   }
@@ -43,6 +43,7 @@ class AppValidator {
     return null;
   }
 
-  static const String _emailPattern =
-      r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$";
+  // static const String _phonePattern = r'^\+998(9[01345789])[0-9]{7}$';
+  // static const String _emailPattern =
+  //     r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$";
 }

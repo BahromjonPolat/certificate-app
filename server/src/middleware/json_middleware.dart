@@ -41,13 +41,13 @@ Handler jsonMiddleware(Handler handler) {
   };
 }
 
-Handler onEmailAndPasswordMiddleware(Handler handler) {
+Handler onPhoneAndPasswordMiddleware(Handler handler) {
   return (context) async {
     final body = await context.request.body();
     final decoded = jsonDecode(body) as Map;
-    final email = decoded['email'];
+    final phone = decoded['phone'];
     final password = decoded['password'];
-    final validEmail = AppValidator.email(email);
+    final validEmail = AppValidator.phone(phone);
     if (validEmail != null) {
       return AppResponse.badRequest(message: validEmail);
     }

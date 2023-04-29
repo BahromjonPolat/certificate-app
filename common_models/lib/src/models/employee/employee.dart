@@ -28,6 +28,9 @@ class Employee with _$Employee {
     @HiveField(4) @Default('') String password,
     @HiveField(5) @Default('') String branchId,
     @HiveField(6) @Default('') String role,
+    @HiveField(7) @Default(0) int createdAt,
+    @HiveField(8) @Default(0) int updatedAt,
+    @HiveField(9) @Default(0) int lastSeen,
   }) = _Employee;
 
   factory Employee.fromJson(Map<String, dynamic> json) =>

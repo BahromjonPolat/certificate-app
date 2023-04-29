@@ -48,6 +48,18 @@ mixin _$Employee {
   String get role => throw _privateConstructorUsedError;
   @HiveField(6)
   set role(String value) => throw _privateConstructorUsedError;
+  @HiveField(7)
+  int get createdAt => throw _privateConstructorUsedError;
+  @HiveField(7)
+  set createdAt(int value) => throw _privateConstructorUsedError;
+  @HiveField(8)
+  int get updatedAt => throw _privateConstructorUsedError;
+  @HiveField(8)
+  set updatedAt(int value) => throw _privateConstructorUsedError;
+  @HiveField(9)
+  int get lastSeen => throw _privateConstructorUsedError;
+  @HiveField(9)
+  set lastSeen(int value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -60,14 +72,18 @@ abstract class $EmployeeCopyWith<$Res> {
   factory $EmployeeCopyWith(Employee value, $Res Function(Employee) then) =
       _$EmployeeCopyWithImpl<$Res, Employee>;
   @useResult
-  $Res call(
-      {@HiveField(0) String id,
-      @HiveField(1) String name,
-      @HiveField(2) String lastName,
-      @HiveField(3) String phone,
-      @HiveField(4) String password,
-      @HiveField(5) String branchId,
-      @HiveField(6) String role});
+  $Res call({
+    @HiveField(0) String id,
+    @HiveField(1) String name,
+    @HiveField(2) String lastName,
+    @HiveField(3) String phone,
+    @HiveField(4) String password,
+    @HiveField(5) String branchId,
+    @HiveField(6) String role,
+    @HiveField(7) int createdAt,
+    @HiveField(8) int updatedAt,
+    @HiveField(9) int lastSeen,
+  });
 }
 
 /// @nodoc
@@ -90,6 +106,9 @@ class _$EmployeeCopyWithImpl<$Res, $Val extends Employee>
     Object? password = null,
     Object? branchId = null,
     Object? role = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? lastSeen = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -120,6 +139,18 @@ class _$EmployeeCopyWithImpl<$Res, $Val extends Employee>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as int,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as int,
+      lastSeen: null == lastSeen
+          ? _value.lastSeen
+          : lastSeen // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -138,7 +169,10 @@ abstract class _$$_EmployeeCopyWith<$Res> implements $EmployeeCopyWith<$Res> {
       @HiveField(3) String phone,
       @HiveField(4) String password,
       @HiveField(5) String branchId,
-      @HiveField(6) String role});
+      @HiveField(6) String role,
+      @HiveField(7) int createdAt,
+      @HiveField(8) int updatedAt,
+      @HiveField(9) int lastSeen});
 }
 
 /// @nodoc
@@ -159,6 +193,9 @@ class __$$_EmployeeCopyWithImpl<$Res>
     Object? password = null,
     Object? branchId = null,
     Object? role = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
+    Object? lastSeen = null,
   }) {
     return _then(_$_Employee(
       id: null == id
@@ -189,6 +226,18 @@ class __$$_EmployeeCopyWithImpl<$Res>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as int,
+      updatedAt: null == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as int,
+      lastSeen: null == lastSeen
+          ? _value.lastSeen
+          : lastSeen // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -203,7 +252,10 @@ class _$_Employee implements _Employee {
       @HiveField(3) this.phone = '',
       @HiveField(4) this.password = '',
       @HiveField(5) this.branchId = '',
-      @HiveField(6) this.role = ''});
+      @HiveField(6) this.role = '',
+      @HiveField(7) this.createdAt = 0,
+      @HiveField(8) this.updatedAt = 0,
+      @HiveField(9) this.lastSeen = 0});
 
   factory _$_Employee.fromJson(Map<String, dynamic> json) =>
       _$$_EmployeeFromJson(json);
@@ -236,10 +288,22 @@ class _$_Employee implements _Employee {
   @JsonKey()
   @HiveField(6)
   String role;
+  @override
+  @JsonKey()
+  @HiveField(7)
+  int createdAt;
+  @override
+  @JsonKey()
+  @HiveField(8)
+  int updatedAt;
+  @override
+  @JsonKey()
+  @HiveField(9)
+  int lastSeen;
 
   @override
   String toString() {
-    return 'Employee(id: $id, name: $name, lastName: $lastName, phone: $phone, password: $password, branchId: $branchId, role: $role)';
+    return 'Employee(id: $id, name: $name, lastName: $lastName, phone: $phone, password: $password, branchId: $branchId, role: $role, createdAt: $createdAt, updatedAt: $updatedAt, lastSeen: $lastSeen)';
   }
 
   @JsonKey(ignore: true)
@@ -264,7 +328,10 @@ abstract class _Employee implements Employee {
       @HiveField(3) String phone,
       @HiveField(4) String password,
       @HiveField(5) String branchId,
-      @HiveField(6) String role}) = _$_Employee;
+      @HiveField(6) String role,
+      @HiveField(7) int createdAt,
+      @HiveField(8) int updatedAt,
+      @HiveField(9) int lastSeen}) = _$_Employee;
 
   factory _Employee.fromJson(Map<String, dynamic> json) = _$_Employee.fromJson;
 
@@ -303,6 +370,21 @@ abstract class _Employee implements Employee {
   String get role;
   @HiveField(6)
   set role(String value);
+  @override
+  @HiveField(7)
+  int get createdAt;
+  @HiveField(7)
+  set createdAt(int value);
+  @override
+  @HiveField(8)
+  int get updatedAt;
+  @HiveField(8)
+  set updatedAt(int value);
+  @override
+  @HiveField(9)
+  int get lastSeen;
+  @HiveField(9)
+  set lastSeen(int value);
   @override
   @JsonKey(ignore: true)
   _$$_EmployeeCopyWith<_$_Employee> get copyWith =>

@@ -24,13 +24,16 @@ class EmployeeAdapter extends TypeAdapter<Employee> {
       password: fields[4] as String,
       branchId: fields[5] as String,
       role: fields[6] as String,
+      createdAt: fields[7] as int,
+      updatedAt: fields[8] as int,
+      lastSeen: fields[9] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, Employee obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -44,7 +47,13 @@ class EmployeeAdapter extends TypeAdapter<Employee> {
       ..writeByte(5)
       ..write(obj.branchId)
       ..writeByte(6)
-      ..write(obj.role);
+      ..write(obj.role)
+      ..writeByte(7)
+      ..write(obj.createdAt)
+      ..writeByte(8)
+      ..write(obj.updatedAt)
+      ..writeByte(9)
+      ..write(obj.lastSeen);
   }
 
   @override
@@ -70,6 +79,9 @@ _$_Employee _$$_EmployeeFromJson(Map<String, dynamic> json) => _$_Employee(
       password: json['password'] as String? ?? '',
       branchId: json['branchId'] as String? ?? '',
       role: json['role'] as String? ?? '',
+      createdAt: json['createdAt'] as int? ?? 0,
+      updatedAt: json['updatedAt'] as int? ?? 0,
+      lastSeen: json['lastSeen'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_EmployeeToJson(_$_Employee instance) =>
@@ -81,4 +93,7 @@ Map<String, dynamic> _$$_EmployeeToJson(_$_Employee instance) =>
       'password': instance.password,
       'branchId': instance.branchId,
       'role': instance.role,
+      'createdAt': instance.createdAt,
+      'updatedAt': instance.updatedAt,
+      'lastSeen': instance.lastSeen,
     };
