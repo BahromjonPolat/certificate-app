@@ -1,7 +1,7 @@
 /*
 
   Created by: Bakhromjon Polat
-  Created on: Apr 29 2023 15:34:01
+  Created on: Apr 29 2023 17:31:35
   Github:   https://github.com/BahromjonPolat
   Leetcode: https://leetcode.com/BahromjonPolat/
   LinkedIn: https://linkedin.com/in/bahromjon-polat
@@ -10,3 +10,9 @@
   Documentation: 
 
 */
+
+import 'package:dart_frog/dart_frog.dart';
+
+Future<Response> onRequest(Handler handler) async {
+  return Response.json();
+}

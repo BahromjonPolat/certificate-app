@@ -18,9 +18,11 @@ import 'package:hive/hive.dart';
 
 class HiveService {
   HiveService._();
-  static final HiveService instance = HiveService._();
 
-  Future<void> initialize(String path) async {
+  static bool _initialized = false;
+
+  static Future<void> initialize(String path) async {
+    if (_initialized) return;
     Hive.init(path);
 
     Hive.registerAdapter(EmployeeAdapter());
@@ -30,9 +32,7 @@ class HiveService {
     await Hive.openBox<CertificateModel>('certificate');
     await Hive.openBox<BranchModel>('branch');
     await Hive.openBox<Employee>('employee');
-  }
 
-  final Box<Employee> employeeBox = Hive.box('employee');
-  final Box<Employee> certificateBox = Hive.box('certificate');
-  final Box<Employee> branchBox = Hive.box('branch');
+    _initialized = true;
+  }
 }
