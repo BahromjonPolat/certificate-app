@@ -64,13 +64,13 @@ class AppResponse {
     );
   }
 
-  static Response conflict() {
+  static Response conflict({String message = 'User already exists'}) {
     return Response.json(
       statusCode: 409,
       body: {
         'error': true,
         'status_code': 409,
-        'message': 'User already exists',
+        'message': message,
       },
     );
   }
