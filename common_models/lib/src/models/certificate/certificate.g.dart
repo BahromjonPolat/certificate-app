@@ -26,13 +26,15 @@ class CertificateModelAdapter extends TypeAdapter<CertificateModel> {
       confirmedBranchId: fields[6] as String,
       createdBy: fields[7] as String,
       createdAt: fields[8] as int,
+      from: fields[9] as int,
+      to: fields[10] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, CertificateModel obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(11)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(2)
@@ -50,7 +52,11 @@ class CertificateModelAdapter extends TypeAdapter<CertificateModel> {
       ..writeByte(7)
       ..write(obj.createdBy)
       ..writeByte(8)
-      ..write(obj.createdAt);
+      ..write(obj.createdAt)
+      ..writeByte(9)
+      ..write(obj.from)
+      ..writeByte(10)
+      ..write(obj.to);
   }
 
   @override
@@ -79,6 +85,8 @@ _$_CertificateModel _$$_CertificateModelFromJson(Map<String, dynamic> json) =>
       confirmedBranchId: json['confirmedBranchId'] as String? ?? '',
       createdBy: json['createdBy'] as String? ?? '',
       createdAt: json['createdAt'] as int? ?? 0,
+      from: json['from'] as int? ?? 0,
+      to: json['to'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_CertificateModelToJson(_$_CertificateModel instance) =>
@@ -92,4 +100,6 @@ Map<String, dynamic> _$$_CertificateModelToJson(_$_CertificateModel instance) =>
       'confirmedBranchId': instance.confirmedBranchId,
       'createdBy': instance.createdBy,
       'createdAt': instance.createdAt,
+      'from': instance.from,
+      'to': instance.to,
     };

@@ -56,6 +56,14 @@ mixin _$CertificateModel {
   int get createdAt => throw _privateConstructorUsedError;
   @HiveField(8)
   set createdAt(int value) => throw _privateConstructorUsedError;
+  @HiveField(9)
+  int get from => throw _privateConstructorUsedError;
+  @HiveField(9)
+  set from(int value) => throw _privateConstructorUsedError;
+  @HiveField(10)
+  int get to => throw _privateConstructorUsedError;
+  @HiveField(10)
+  set to(int value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -78,7 +86,9 @@ abstract class $CertificateModelCopyWith<$Res> {
       @HiveField(5) String confirmedEmployeeId,
       @HiveField(6) String confirmedBranchId,
       @HiveField(7) String createdBy,
-      @HiveField(8) int createdAt});
+      @HiveField(8) int createdAt,
+      @HiveField(9) int from,
+      @HiveField(10) int to});
 }
 
 /// @nodoc
@@ -103,6 +113,8 @@ class _$CertificateModelCopyWithImpl<$Res, $Val extends CertificateModel>
     Object? confirmedBranchId = null,
     Object? createdBy = null,
     Object? createdAt = null,
+    Object? from = null,
+    Object? to = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -141,6 +153,14 @@ class _$CertificateModelCopyWithImpl<$Res, $Val extends CertificateModel>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as int,
+      from: null == from
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
+              as int,
+      to: null == to
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -162,7 +182,9 @@ abstract class _$$_CertificateModelCopyWith<$Res>
       @HiveField(5) String confirmedEmployeeId,
       @HiveField(6) String confirmedBranchId,
       @HiveField(7) String createdBy,
-      @HiveField(8) int createdAt});
+      @HiveField(8) int createdAt,
+      @HiveField(9) int from,
+      @HiveField(10) int to});
 }
 
 /// @nodoc
@@ -185,6 +207,8 @@ class __$$_CertificateModelCopyWithImpl<$Res>
     Object? confirmedBranchId = null,
     Object? createdBy = null,
     Object? createdAt = null,
+    Object? from = null,
+    Object? to = null,
   }) {
     return _then(_$_CertificateModel(
       id: null == id
@@ -223,6 +247,14 @@ class __$$_CertificateModelCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as int,
+      from: null == from
+          ? _value.from
+          : from // ignore: cast_nullable_to_non_nullable
+              as int,
+      to: null == to
+          ? _value.to
+          : to // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -239,7 +271,9 @@ class _$_CertificateModel implements _CertificateModel {
       @HiveField(5) this.confirmedEmployeeId = '',
       @HiveField(6) this.confirmedBranchId = '',
       @HiveField(7) this.createdBy = '',
-      @HiveField(8) this.createdAt = 0});
+      @HiveField(8) this.createdAt = 0,
+      @HiveField(9) this.from = 0,
+      @HiveField(10) this.to = 0});
 
   factory _$_CertificateModel.fromJson(Map<String, dynamic> json) =>
       _$$_CertificateModelFromJson(json);
@@ -280,10 +314,18 @@ class _$_CertificateModel implements _CertificateModel {
   @JsonKey()
   @HiveField(8)
   int createdAt;
+  @override
+  @JsonKey()
+  @HiveField(9)
+  int from;
+  @override
+  @JsonKey()
+  @HiveField(10)
+  int to;
 
   @override
   String toString() {
-    return 'CertificateModel(id: $id, uniqueCode: $uniqueCode, price: $price, enable: $enable, usedDate: $usedDate, confirmedEmployeeId: $confirmedEmployeeId, confirmedBranchId: $confirmedBranchId, createdBy: $createdBy, createdAt: $createdAt)';
+    return 'CertificateModel(id: $id, uniqueCode: $uniqueCode, price: $price, enable: $enable, usedDate: $usedDate, confirmedEmployeeId: $confirmedEmployeeId, confirmedBranchId: $confirmedBranchId, createdBy: $createdBy, createdAt: $createdAt, from: $from, to: $to)';
   }
 
   @JsonKey(ignore: true)
@@ -310,7 +352,9 @@ abstract class _CertificateModel implements CertificateModel {
       @HiveField(5) String confirmedEmployeeId,
       @HiveField(6) String confirmedBranchId,
       @HiveField(7) String createdBy,
-      @HiveField(8) int createdAt}) = _$_CertificateModel;
+      @HiveField(8) int createdAt,
+      @HiveField(9) int from,
+      @HiveField(10) int to}) = _$_CertificateModel;
 
   factory _CertificateModel.fromJson(Map<String, dynamic> json) =
       _$_CertificateModel.fromJson;
@@ -360,6 +404,16 @@ abstract class _CertificateModel implements CertificateModel {
   int get createdAt;
   @HiveField(8)
   set createdAt(int value);
+  @override
+  @HiveField(9)
+  int get from;
+  @HiveField(9)
+  set from(int value);
+  @override
+  @HiveField(10)
+  int get to;
+  @HiveField(10)
+  set to(int value);
   @override
   @JsonKey(ignore: true)
   _$$_CertificateModelCopyWith<_$_CertificateModel> get copyWith =>
