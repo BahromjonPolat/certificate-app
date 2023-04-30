@@ -11,6 +11,7 @@
 
 */
 
+import 'package:certificate/view/screens/admin/certificate_screen.dart';
 import 'package:certificate/view/screens/screens.dart';
 import 'package:flutter/material.dart';
 
@@ -45,6 +46,11 @@ class RouteGenerator {
         return _FadeRoute(
           child: const EmployeeScreen(),
           routeName: RouteNames.employee,
+        );
+      case RouteNames.certificate:
+        return _FadeRoute(
+          child: const CertificateScreen(),
+          routeName: RouteNames.certificate,
         );
       default:
         return null;

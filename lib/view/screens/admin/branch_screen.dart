@@ -22,7 +22,7 @@ class BranchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('branches')),
+      appBar: AppBar(title: const Text('Branches')),
       body: BlocProvider(
         create: (_) => BranchBloc()..add(const BranchEvent.started()),
         child: BlocConsumer<BranchBloc, BranchState>(

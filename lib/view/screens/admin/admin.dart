@@ -13,3 +13,4 @@
 export 'admin_panel.dart';
 export 'branch_screen.dart';
 export 'employee_screen.dart';
+export 'certificate_screen.dart';

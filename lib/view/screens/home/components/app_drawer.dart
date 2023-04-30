@@ -39,7 +39,9 @@ class AppDrawer extends StatelessWidget {
           AppDrawerItem(
             icon: CupertinoIcons.ticket,
             title: 'Certificates',
-            onTap: () {},
+            onTap: () {
+              AppNavigator.pushNamed(RouteNames.certificate);
+            },
           ),
           AppDrawerItem(
             icon: Icons.person_outline,
