@@ -1,7 +1,7 @@
 /*
 
   Created by: Bakhromjon Polat
-  Created on: Apr 29 2023 15:50:51
+  Created on: Apr 30 2023 09:54:06
   Github:   https://github.com/BahromjonPolat
   Leetcode: https://leetcode.com/BahromjonPolat/
   LinkedIn: https://linkedin.com/in/bahromjon-polat
@@ -10,3 +10,4 @@
   Documentation: 
 
 */
+export 'splash_screen.dart';

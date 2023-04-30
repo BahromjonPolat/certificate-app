@@ -18,7 +18,6 @@ import 'package:dart_frog/dart_frog.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../src/components/jwt_service.dart';
-import '../../../src/components/logger.dart';
 import '../../../src/components/responses.dart';
 import '../../../src/validators/user_validator.dart';
 
