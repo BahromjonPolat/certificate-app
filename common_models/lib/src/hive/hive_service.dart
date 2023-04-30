@@ -32,6 +32,7 @@ class HiveService {
     await Hive.openBox<CertificateModel>('certificate');
     await Hive.openBox<BranchModel>('branch');
     await Hive.openBox<Employee>('employee');
+    await Hive.openBox('pref');
 
     _initialized = true;
   }

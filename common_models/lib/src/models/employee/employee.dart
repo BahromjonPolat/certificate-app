@@ -31,6 +31,7 @@ class Employee with _$Employee {
     @HiveField(7) @Default(0) int createdAt,
     @HiveField(8) @Default(0) int updatedAt,
     @HiveField(9) @Default(0) int lastSeen,
+    @HiveField(10) @Default('') String? token,
   }) = _Employee;
 
   factory Employee.fromJson(Map<String, dynamic> json) =>

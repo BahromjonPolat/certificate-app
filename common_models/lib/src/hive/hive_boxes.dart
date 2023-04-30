@@ -18,4 +18,5 @@ class HiveBoxes {
   static final Box<Employee> employeeBox = Hive.box('employee');
   static final Box<CertificateModel> certificateBox = Hive.box('certificate');
   static final Box<BranchModel> branchBox = Hive.box('branch');
+  static final Box<BranchModel> pref = Hive.box('pref');
 }
