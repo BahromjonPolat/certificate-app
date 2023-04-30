@@ -22,9 +22,9 @@ Future<Response> onRequest(RequestContext context) async {
 
   final certificateBox = HiveBoxes.certificateBox;
   var certificates = <CertificateModel>[];
-  if (status == 'enable') {
+  if (status == 'active') {
     certificates = certificateBox.values.where((cert) => cert.enable).toList();
-  } else if (status == 'disable') {
+  } else if (status == 'inactive') {
     certificates = certificateBox.values.where((cert) => !cert.enable).toList();
   } else {
     certificates = certificateBox.values.toList();
