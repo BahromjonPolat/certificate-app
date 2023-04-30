@@ -18,6 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../blocs/confirm/confirm_bloc.dart';
+import 'autocomlete_widget.dart';
 
 class ConfirmPage extends StatelessWidget {
   ConfirmPage({super.key, required this.employee});
@@ -55,11 +56,9 @@ class ConfirmPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppInputField(
+                  AutocompleteWidget(
                     controller: _uniqueCodeController,
-                    hint: 'Enter code',
-                    action: TextInputAction.done,
-                    validator: AppValidators.general,
+                    certificates: HiveBoxes.certificateBox.values,
                   ),
                   const SizedBox(height: 24.0),
                   PrimaryButton(
@@ -73,7 +72,6 @@ class ConfirmPage extends StatelessWidget {
                       ConfirmBloc confirmBloc = BlocProvider.of(context);
                       String id = _uniqueCodeController.text.trim();
                       String branchId = employee.branchId;
-                      Log.j(employee.toJson(), name: 'confirm_page');
                       confirmBloc.add(
                         ConfirmEvent.dataEntered(
                           certificateId: id,

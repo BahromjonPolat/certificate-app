@@ -30,6 +30,7 @@ class AppInputField extends StatelessWidget {
   IconData assetIcon = Icons.abc;
   bool obscureText;
   bool _withPrefix = false;
+  FocusNode? focusNode;
 
   AppInputField({
     super.key,
@@ -46,6 +47,7 @@ class AppInputField extends StatelessWidget {
     this.validator,
     this.fillColor,
     this.obscureText = false,
+    this.focusNode,
   });
 
   AppInputField.withPrefix({
@@ -64,6 +66,7 @@ class AppInputField extends StatelessWidget {
     this.validator,
     this.fillColor,
     this.obscureText = false,
+    this.focusNode,
   }) {
     _withPrefix = true;
   }
@@ -81,6 +84,7 @@ class AppInputField extends StatelessWidget {
       onTap: onTap,
       maxLines: maxLines,
       obscureText: obscureText,
+      focusNode: focusNode,
       decoration: InputDecoration(
         hintText: hint,
         fillColor: fillColor,

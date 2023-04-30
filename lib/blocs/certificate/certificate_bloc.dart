@@ -19,10 +19,15 @@ class CertificateBloc extends Bloc<CertificateEvent, CertificateState> {
       failureOrSuccess.fold(
         (l) => emit(CertificateState.failed(l.getMessage())),
         (r) {
-          List<CertificateModel> employees = (r.data['data'] as List)
+          List<CertificateModel> certificates = (r.data['data'] as List)
               .map((e) => CertificateModel.fromJson(e))
               .toList();
-          emit(CertificateState.success(employees));
+          Map<String, CertificateModel> entries = {};
+          for (var element in certificates) {
+            entries[element.id] = element;
+          }
+          HiveBoxes.certificateBox.putAll(entries);
+          emit(CertificateState.success(certificates));
         },
       );
     });

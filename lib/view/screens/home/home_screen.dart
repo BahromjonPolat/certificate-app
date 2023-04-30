@@ -11,6 +11,7 @@
 
 */
 
+import 'package:certificate/blocs/certificate/certificate_bloc.dart';
 import 'package:certificate/core/core.dart';
 import 'package:certificate/view/screens/admin/admin.dart';
 import 'package:certificate/view/screens/home/components/app_drawer.dart';
@@ -28,12 +29,18 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   Employee employee = AppPref.employee;
   @override
+  void initState() {
+    super.initState();
+
+    CertificateBloc().add(const CertificateEvent.started());
+  }
+
+  @override
   Widget build(BuildContext context) {
-    bool isAdmin = employee.role == 'admin';
     return Scaffold(
       appBar: AppBar(title: const Text('Home Screen')),
       drawer: AppDrawer(employee: employee),
-      body: isAdmin ? const AdminPanel() : ConfirmPage(employee: employee),
+      body: ConfirmPage(employee: employee),
     );
   }
 }
