@@ -34,11 +34,15 @@ class ConfirmBloc extends Bloc<ConfirmEvent, ConfirmState> {
             state.copyWith(
               branchId: value.branchId,
               certificateId: value.certificateId,
+              failureOrSuccess: none(),
             ),
           );
         },
         confirmed: (value) async {
-          emit(state.copyWith(isLoading: true));
+          emit(state.copyWith(
+            isLoading: true,
+            failureOrSuccess: none(),
+          ));
 
           final failureOrSuccess = await requests.confirmCert(
             certificateId: state.certificateId,

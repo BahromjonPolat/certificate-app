@@ -12,23 +12,23 @@
 */
 
 import 'package:certificate/core/core.dart';
+import 'package:certificate/view/screens/admin/admin.dart';
+import 'package:certificate/view/screens/home/components/app_drawer.dart';
 import 'package:certificate/view/screens/home/components/components.dart';
 import 'package:common_models/common_models.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  Employee employee = AppPref.employee;
-  @override
   Widget build(BuildContext context) {
+    Employee employee = AppPref.employee;
+    bool isAdmin = employee.role == 'admin';
     return Scaffold(
-      body: ConfirmPage(),
+      appBar: AppBar(title: const Text('Home Screen')),
+      drawer: AppDrawer(employee: employee),
+      body: isAdmin ? const AdminPanel() : ConfirmPage(employee: employee),
     );
   }
 }
