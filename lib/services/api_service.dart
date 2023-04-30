@@ -17,6 +17,7 @@ import 'package:certificate/core/hive/app_pref.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 
+import '../core/components/logger.dart';
 import '../core/errors/failure.dart';
 import '../core/models/response/response_data.dart';
 
@@ -49,8 +50,8 @@ class ApiService {
     Object? body,
   }) async {
     try {
+      Log.d(body, name: 'api_service');
       Uri url = Uri.parse('$_baseUrl$path');
-
       http.Response response = await http.post(
         url,
         body: jsonEncode(body),

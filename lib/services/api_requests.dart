@@ -75,4 +75,14 @@ class ApiRequests extends ApiService {
   Future<Either<ServerFailure, ApiResponse>> getEmployees() async {
     return await get('/employee/get');
   }
+
+  Future<Either<ServerFailure, ApiResponse>> assignBranchToEmployee({
+    required String employeeId,
+    required String branchId,
+  }) async {
+    return await post(
+      '/employee/update/$employeeId',
+      body: {'branchId': branchId},
+    );
+  }
 }

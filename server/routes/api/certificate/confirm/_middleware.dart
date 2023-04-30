@@ -14,11 +14,7 @@ import 'package:dart_frog/dart_frog.dart';
 
 import '../../../../src/middleware/http_methods_middleware.dart';
 import '../../../../src/middleware/json_middleware.dart';
-import '../../../../src/middleware/role_middleware.dart';
 
 Handler middleware(Handler handler) {
-  return handler
-      .use(jsonMiddleware)
-      .use(onRoleChecked)
-      .use(onPostRequestMiddleware);
+  return handler.use(jsonMiddleware).use(onPostRequestMiddleware);
 }

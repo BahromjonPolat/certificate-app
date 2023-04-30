@@ -20,6 +20,7 @@ import 'package:flutter/material.dart';
 class AutocompleteWidget extends StatelessWidget {
   final Iterable<CertificateModel> certificates;
   final TextEditingController controller;
+
   const AutocompleteWidget({
     super.key,
     required this.certificates,
@@ -35,6 +36,9 @@ class AutocompleteWidget extends StatelessWidget {
         focusNode,
         onFieldSubmitted,
       ) {
+        if (controller.text.isEmpty) {
+          textEditingController.clear();
+        }
         return AppInputField(
           focusNode: focusNode,
           controller: textEditingController,
@@ -46,7 +50,9 @@ class AutocompleteWidget extends StatelessWidget {
         controller.text = option.uniqueCode;
       },
       optionsBuilder: (textEditingValue) {
+        controller.text = textEditingValue.text;
         final query = textEditingValue.text.trim();
+
         if (query.isEmpty) {
           return const Iterable<CertificateModel>.empty();
         }
