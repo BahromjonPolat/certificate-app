@@ -16,7 +16,6 @@ import 'package:common_models/common_models.dart';
 import 'package:dart_frog/dart_frog.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../../src/components/logger.dart';
 import '../../../../src/components/responses.dart';
 import '../../../../src/validators/certificate_validator.dart';
 
@@ -25,8 +24,6 @@ Future<Response> onRequest(RequestContext context) async {
   final json = jsonDecode(body) as Map<String, dynamic>;
   final branchValidator = CertificateValidator();
   final result = branchValidator.validate(json);
-
-  Log.d(context.request.headers, name: 'index');
 
   if (result.hasError) {
     return AppResponse.validationError(errors: result.toJson());

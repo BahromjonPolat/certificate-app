@@ -13,6 +13,7 @@
 
 import 'package:certificate/blocs/certificate/certificate_bloc.dart';
 import 'package:certificate/core/core.dart';
+import 'package:certificate/routing/routing.dart';
 import 'package:certificate/view/widgets/certificate_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,11 +23,24 @@ class CertificateScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Certificates')),
-      body: BlocProvider(
-        create: (_) => CertificateBloc()..add(const CertificateEvent.started()),
-        child: BlocConsumer<CertificateBloc, CertificateState>(
+    return BlocProvider(
+      create: (context) =>
+          CertificateBloc()..add(const CertificateEvent.started()),
+      child: Scaffold(
+        floatingActionButton: Visibility(
+          visible: AppPref.employee.role == 'admin',
+          child: FloatingActionButton(
+            child: const Icon(Icons.add),
+            onPressed: () {
+              AppNavigator.pushNamed(RouteNames.createCertificate)
+                  .then((value) {
+                if (value != null) {}
+              });
+            },
+          ),
+        ),
+        appBar: AppBar(title: const Text('Certificates')),
+        body: BlocConsumer<CertificateBloc, CertificateState>(
           builder: (context, state) {
             return state.when(
               initial: () => const SizedBox(),

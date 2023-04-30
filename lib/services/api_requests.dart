@@ -46,6 +46,21 @@ class ApiRequests extends ApiService {
     );
   }
 
+  Future<Either<ServerFailure, ApiResponse>> createCert({
+    required int price,
+    required int from,
+    required int to,
+  }) async {
+    return await post(
+      '/certificate/create',
+      body: {
+        'price': price,
+        'from': from,
+        'to': to,
+      },
+    );
+  }
+
   Future<Either<ServerFailure, ApiResponse>> getCertificateById({
     required String certificateId,
   }) async {

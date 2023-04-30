@@ -19,4 +19,5 @@ class RouteNames {
   static const String branches = '/branches';
   static const String employee = '/employee';
   static const String certificate = '/certificate';
+  static const String createCertificate = '/create_certificate';
 }

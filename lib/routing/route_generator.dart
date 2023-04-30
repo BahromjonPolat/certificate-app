@@ -11,9 +11,11 @@
 
 */
 
+import 'package:certificate/blocs/add_cert/add_cert_bloc.dart';
 import 'package:certificate/view/screens/admin/certificate_screen.dart';
 import 'package:certificate/view/screens/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'app_route_name.dart';
 
@@ -51,6 +53,14 @@ class RouteGenerator {
         return _FadeRoute(
           child: const CertificateScreen(),
           routeName: RouteNames.certificate,
+        );
+      case RouteNames.createCertificate:
+        return _FadeRoute(
+          child: BlocProvider(
+            create: (context) => AddCertBloc(),
+            child: const CreateCertificateScreen(),
+          ),
+          routeName: RouteNames.createCertificate,
         );
       default:
         return null;
