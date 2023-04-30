@@ -11,7 +11,9 @@
 
 */
 
+import 'package:certificate/view/screens/home/components/app_drawer_item.dart';
 import 'package:common_models/common_models.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -32,6 +34,21 @@ class AppDrawer extends StatelessWidget {
               ]),
             ),
             accountEmail: Text(employee.phone),
+          ),
+          AppDrawerItem(
+            icon: CupertinoIcons.ticket,
+            title: 'Certificates',
+            onTap: () {},
+          ),
+          AppDrawerItem(
+            icon: Icons.person_outline,
+            title: 'Employees',
+            onTap: () {},
+          ),
+          AppDrawerItem(
+            icon: Icons.shopping_bag_outlined,
+            title: 'Branches',
+            onTap: () {},
           ),
         ],
       ),
