@@ -1,16 +1,54 @@
-# certificate
+# Hilol nashr certificate
 
-A new Flutter project.
-
+Qo'llanma
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Loyiha 3 ta qismga bo'lib tayyorlandi
 
-A few resources to get you started if this is your first Flutter project:
+## Contents
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- [Server](#server) - Loyihaning backend qismi
+- [Client](#client) - Loyihaning UI qismi
+- [Common models](./common_models/) - Lohinaning yuqoridagi har ikki qismida ishlatilgan bir xil klass va funksiyalar
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Server
+
+Loyiha ishlashi uchun backend ishga tushirilshi kerak.
+
+
+[server](./server/) papkasiga o'ting!
+```
+cd server
+```
+
+Loyihada ishlatilgan paketlarni o'rnating!
+```
+dart pub get
+```
+
+Va loyihani ishga tushiring
+```
+dart_frog dev
+```
+P.S Loyiha [**localhost:8080**](localhost:8080) da ishga tushadi
+
+### Client
+
+Loyihada ishlatilgan paketlarni o'rnating!
+```
+flutter pub get
+```
+
+Va loyihani ishga tushiring
+```
+flutter run
+```
+
+Ilova iOS simulatorda ishga tushirilsa ***http://localhost:8080*** da ishga tushadi.
+Android emulatorda ishga tushirilsa, ***http://10.0.0.2:8080*** da ishga tushadi.
+Agar loyiha Haqiqiy qurilmada ishga tushirilsa, **backend** qismi bilan aloqa bo'lshi uchun,
+[**ApiService**](./lib/services/api_service.dart) klassida **baseurl** ni WIFI IPV4 manziliga o'zgarotiring. 
+**Misol: 192.168.0.13**
+
+P.S. Server ishga tushirilgan kod va loyiha bitta WIFI tarmog'iga ulangan bo'lishi shart.
+

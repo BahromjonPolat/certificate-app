@@ -29,13 +29,19 @@ Future<Response> onRequest(RequestContext context) async {
     return AppResponse.validationError(errors: result.toJson());
   }
 
+  final from = json['from'] as int;
+  final to = json['to'] as int;
+
+  if (from < to) {
+    return AppResponse.badRequest(message: 'from must be greater then to');
+  }
   final employee = await context.read<Future<Employee>>();
   final id = const Uuid().v4();
 
   final certificate = CertificateModel(
     id: id,
-    from: json['from'] as int,
-    to: json['to'] as int,
+    from: from,
+    to: to,
     price: json['price'] as int,
     uniqueCode: id,
     createdBy: employee.id,
