@@ -11,6 +11,7 @@
 
 */
 
+import 'package:certificate/view/screens/admin/branch_screen.dart';
 import 'package:certificate/view/screens/screens.dart';
 import 'package:common_models/common_models.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +38,11 @@ class RouteGenerator {
           child: const LoginScreen(),
           routeName: RouteNames.login,
         );
+      case RouteNames.branches:
+        return _FadeRoute(
+          child: const BranchScreen(),
+          routeName: RouteNames.branches,
+        );
       default:
         return null;
     }
@@ -51,8 +57,8 @@ class _FadeRoute extends PageRouteBuilder {
     required this.routeName,
   }) : super(
           settings: RouteSettings(name: routeName),
-          transitionDuration: const Duration(milliseconds: 1500),
-          reverseTransitionDuration: const Duration(milliseconds: 1500),
+          transitionDuration: const Duration(milliseconds: 500),
+          reverseTransitionDuration: const Duration(milliseconds: 500),
           pageBuilder: (
             BuildContext context,
             Animation<double> animation,

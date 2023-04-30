@@ -11,6 +11,7 @@
 
 */
 
+import 'package:certificate/routing/routing.dart';
 import 'package:certificate/view/screens/home/components/app_drawer_item.dart';
 import 'package:common_models/common_models.dart';
 import 'package:flutter/cupertino.dart';
@@ -48,7 +49,9 @@ class AppDrawer extends StatelessWidget {
           AppDrawerItem(
             icon: Icons.shopping_bag_outlined,
             title: 'Branches',
-            onTap: () {},
+            onTap: () {
+              AppNavigator.pushNamed(RouteNames.branches);
+            },
           ),
         ],
       ),
