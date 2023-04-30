@@ -44,7 +44,9 @@ class AppDrawer extends StatelessWidget {
           AppDrawerItem(
             icon: Icons.person_outline,
             title: 'Employees',
-            onTap: () {},
+            onTap: () {
+              AppNavigator.pushNamed(RouteNames.employee);
+            },
           ),
           AppDrawerItem(
             icon: Icons.shopping_bag_outlined,

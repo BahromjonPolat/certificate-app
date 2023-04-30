@@ -71,4 +71,8 @@ class ApiRequests extends ApiService {
   Future<Either<ServerFailure, ApiResponse>> getBranches() async {
     return await get('/branch/get');
   }
+
+  Future<Either<ServerFailure, ApiResponse>> getEmployees() async {
+    return await get('/employee/get');
+  }
 }

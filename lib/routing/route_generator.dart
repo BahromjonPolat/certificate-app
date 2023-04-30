@@ -11,9 +11,7 @@
 
 */
 
-import 'package:certificate/view/screens/admin/branch_screen.dart';
 import 'package:certificate/view/screens/screens.dart';
-import 'package:common_models/common_models.dart';
 import 'package:flutter/material.dart';
 
 import 'app_route_name.dart';
@@ -42,6 +40,11 @@ class RouteGenerator {
         return _FadeRoute(
           child: const BranchScreen(),
           routeName: RouteNames.branches,
+        );
+      case RouteNames.employee:
+        return _FadeRoute(
+          child: const EmployeeScreen(),
+          routeName: RouteNames.employee,
         );
       default:
         return null;
