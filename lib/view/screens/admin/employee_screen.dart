@@ -12,6 +12,9 @@
 */
 import 'package:certificate/blocs/employee/employee_bloc.dart';
 import 'package:certificate/core/core.dart';
+import 'package:certificate/routing/routing.dart';
+import 'package:certificate/view/widgets/branch_list_widget.dart';
+import 'package:common_models/common_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -42,12 +45,34 @@ class EmployeeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final employee = employees[index];
                     bool isMe = currentEmployee.id == employee.id;
+                    final branch = HiveBoxes.branchBox.get(employee.branchId);
                     return ListTile(
                       tileColor: isMe ? Colors.green.shade100 : null,
                       leading: CircleAvatar(child: Text('${index + 1}')),
                       title: Text(isMe ? 'You' : employee.name),
-                      subtitle: Text(employee.phone),
-                      onTap: () {},
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(branch?.name ?? 'No branch'),
+                          Text(employee.phone),
+                        ],
+                      ),
+                      onTap: () {
+                        EmployeeBloc branchBloc = BlocProvider.of(context);
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            List<BranchModel> branches =
+                                HiveBoxes.branchBox.values.toList();
+                            return BranchListWidget(
+                              branches: branches,
+                              onSelected: (value) {
+                                AppNavigator.pop();
+                              },
+                            );
+                          },
+                        );
+                      },
                     );
                   },
                 );

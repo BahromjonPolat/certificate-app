@@ -12,6 +12,7 @@
 */
 
 import 'package:certificate/blocs/branch/branch_bloc.dart';
+import 'package:certificate/view/widgets/branch_list_widget.dart';
 import 'package:common_models/common_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,17 +33,7 @@ class BranchScreen extends StatelessWidget {
               loading: () => const Center(child: CircularProgressIndicator()),
               failed: (error) => Center(child: Text(error)),
               success: (branches) {
-                return ListView.builder(
-                  itemCount: branches.length,
-                  itemBuilder: (context, index) {
-                    BranchModel branch = branches[index];
-                    return ListTile(
-                      leading: CircleAvatar(child: Text('${index + 1}')),
-                      title: Text(branch.name),
-                      subtitle: Text(branch.address),
-                    );
-                  },
-                );
+                return BranchListWidget(branches: branches, onSelected: null);
               },
             );
           },

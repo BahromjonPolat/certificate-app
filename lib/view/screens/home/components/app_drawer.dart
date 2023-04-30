@@ -57,6 +57,20 @@ class AppDrawer extends StatelessWidget {
               AppNavigator.pushNamed(RouteNames.branches);
             },
           ),
+          const Spacer(),
+          AppDrawerItem(
+            icon: Icons.logout_outlined,
+            title: 'Logout',
+            onTap: () async {
+              await Future.wait([
+                HiveBoxes.branchBox.clear(),
+                HiveBoxes.certificateBox.clear(),
+                HiveBoxes.employeeBox.clear(),
+              ]);
+
+              AppNavigator.pushNamedAndRemoveUntil(RouteNames.login);
+            },
+          ),
         ],
       ),
     );

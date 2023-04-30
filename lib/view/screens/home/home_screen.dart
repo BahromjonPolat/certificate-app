@@ -11,6 +11,7 @@
 
 */
 
+import 'package:certificate/blocs/branch/branch_bloc.dart';
 import 'package:certificate/blocs/certificate/certificate_bloc.dart';
 import 'package:certificate/core/core.dart';
 import 'package:certificate/view/screens/admin/admin.dart';
@@ -33,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
 
     CertificateBloc().add(const CertificateEvent.started());
+    BranchBloc().add(const BranchEvent.started());
   }
 
   @override

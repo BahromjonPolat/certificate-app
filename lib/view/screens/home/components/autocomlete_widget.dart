@@ -39,6 +39,7 @@ class AutocompleteWidget extends StatelessWidget {
           focusNode: focusNode,
           controller: textEditingController,
           validator: AppValidators.general,
+          hint: 'Enter a certificate unique code',
         );
       },
       onSelected: (option) {

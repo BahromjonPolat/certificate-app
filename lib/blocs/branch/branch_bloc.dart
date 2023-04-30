@@ -23,6 +23,12 @@ class BranchBloc extends Bloc<BranchEvent, BranchState> {
           List<BranchModel> branches = (r.data['data'] as List)
               .map((e) => BranchModel.fromJson(e))
               .toList();
+          Map<String, BranchModel> entries = {};
+
+          for (var branch in branches) {
+            entries[branch.id] = branch;
+          }
+          HiveBoxes.branchBox.putAll(entries);
           emit(BranchState.success(branches));
         },
       );
