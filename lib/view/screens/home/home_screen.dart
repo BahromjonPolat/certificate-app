@@ -11,13 +11,24 @@
 
 */
 
+import 'package:certificate/core/core.dart';
+import 'package:certificate/view/screens/home/components/components.dart';
+import 'package:common_models/common_models.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  Employee employee = AppPref.employee;
+  @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: ConfirmPage(),
+    );
   }
 }

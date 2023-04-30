@@ -1,7 +1,7 @@
 /*
 
   Created by: Bakhromjon Polat
-  Created on: Apr 21 2023 20:50:27
+  Created on: Mar 10 2023 22:58:11
   Github:   https://github.com/BahromjonPolat
   Leetcode: https://leetcode.com/BahromjonPolat/
   LinkedIn: https://linkedin.com/in/bahromjon-polat
@@ -10,10 +10,4 @@
   Documentation: 
 
 */
-
-class RouteNames {
-  const RouteNames._();
-  static const String initial = '/';
-  static const String home = '/home';
-  static const String login = '/login';
-}
+export 'app_theme.dart';

@@ -12,6 +12,7 @@
 */
 
 import 'package:certificate/view/screens/screens.dart';
+import 'package:common_models/common_models.dart';
 import 'package:flutter/material.dart';
 
 import 'app_route_name.dart';
@@ -29,6 +30,12 @@ class RouteGenerator {
         return _FadeRoute(
           child: const HomeScreen(),
           routeName: RouteNames.home,
+        );
+
+      case RouteNames.login:
+        return _FadeRoute(
+          child: const LoginScreen(),
+          routeName: RouteNames.login,
         );
       default:
         return null;

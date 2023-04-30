@@ -13,6 +13,7 @@
 
 import 'dart:async';
 
+import 'package:certificate/core/core.dart';
 import 'package:certificate/routing/app_navigator.dart';
 import 'package:certificate/routing/app_route_name.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,11 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
       const Duration(seconds: 1),
       () {
-        AppNavigator.pushNamed(RouteNames.home);
+        if (AppPref.token.isEmpty) {
+          AppNavigator.pushNamed(RouteNames.login);
+        } else {
+          AppNavigator.pushNamed(RouteNames.home);
+        }
       },
     );
   }

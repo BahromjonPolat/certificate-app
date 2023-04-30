@@ -17,17 +17,15 @@ import 'package:hive/hive.dart';
 class AppPref {
   const AppPref._();
 
-  static final Box box = HiveBoxes.pref;
-
   static Future<void> setToken(String token) async {
-    await box.put('token', token);
+    await HiveBoxes.pref.put('token', token);
   }
 
-  static String get token => box.get('token') ?? '';
+  static String get token => HiveBoxes.pref.get('token') ?? '';
 
   static Future<void> setUser(Employee employee) async {
-    await box.put('employee', employee);
+    await HiveBoxes.pref.put('employee', employee);
   }
 
-  static Employee get employee => box.get('employee');
+  static Employee get employee => HiveBoxes.pref.get('employee');
 }

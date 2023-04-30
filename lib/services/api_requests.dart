@@ -32,4 +32,43 @@ class ApiRequests extends ApiService {
       },
     );
   }
+
+  Future<Either<ServerFailure, ApiResponse>> confirmCert({
+    required String certificateId,
+    required String branchId,
+  }) async {
+    return await post(
+      '/certificate/confirm',
+      body: {
+        'id': certificateId,
+        'branchId': branchId,
+      },
+    );
+  }
+
+  Future<Either<ServerFailure, ApiResponse>> getCertificateById({
+    required String certificateId,
+  }) async {
+    return await get('/certificate/get/$certificateId');
+  }
+
+  Future<Either<ServerFailure, ApiResponse>> getCertificates() async {
+    return await get('/certificate/get');
+  }
+
+  Future<Either<ServerFailure, ApiResponse>> createBranch({
+    required String name,
+    required String address,
+    required String city,
+  }) async {
+    return await post('/branch/create', body: {
+      'name': name,
+      'address': address,
+      'city': city,
+    });
+  }
+
+  Future<Either<ServerFailure, ApiResponse>> getBranches() async {
+    return await get('/branch/get');
+  }
 }

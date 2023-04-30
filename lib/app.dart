@@ -11,6 +11,7 @@
 
 */
 
+import 'package:certificate/core/core.dart';
 import 'package:certificate/routing/app_navigator.dart';
 import 'package:certificate/routing/app_route_name.dart';
 import 'package:certificate/routing/route_generator.dart';
@@ -24,7 +25,7 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hilol nashr',
-      theme: ThemeData(useMaterial3: true),
+      theme: AppTheme.theme,
       onGenerateRoute: RouteGenerator.onGenerateRoute,
       initialRoute: RouteNames.initial,
       navigatorKey: AppNavigator.navigatorKey,

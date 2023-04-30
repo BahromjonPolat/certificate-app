@@ -16,6 +16,7 @@ import 'package:certificate/core/core.dart';
 import 'package:certificate/routing/routing.dart';
 import 'package:certificate/view/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -27,8 +28,21 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey();
-  final _emailController = TextEditingController();
+  final _phoneController = TextEditingController(text: '+998');
   final _passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _phoneController.addListener(() {
+      if (_phoneController.text.length < 4) {
+        _phoneController.text = "+998";
+        _phoneController.selection = TextSelection.fromPosition(
+          TextPosition(offset: _phoneController.text.length),
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
         },
         builder: (context, state) {
           return Scaffold(
-            resizeToAvoidBottomInset: false,
+            // resizeToAvoidBottomInset: false,
             body: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 16.0,
@@ -68,15 +82,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Spacer(),
                     const SizedBox(height: 12.0),
 
-                    // ! Email
+                    // ! Phone
                     AppInputField.withPrefix(
                       assetIcon: Icons.phone_outlined,
-                      controller: _emailController,
-                      hint: "Enter Email",
-                      keyboardType: TextInputType.emailAddress,
+                      controller: _phoneController,
+                      hint: "Enter Phone",
+                      keyboardType: TextInputType.phone,
                       action: TextInputAction.next,
                       capitalization: TextCapitalization.none,
                       validator: AppValidators.phone,
+                      formatters: [
+                        FilteringTextInputFormatter.allow(RegExp(r'(^\+?\d*)')),
+                      ],
                     ),
                     const SizedBox(height: 12.0),
 
@@ -100,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (validate) {
                           formState?.save();
 
-                          String email = _emailController.text;
+                          String email = _phoneController.text;
                           String password = _passwordController.text;
 
                           BlocProvider.of<LoginBloc>(context).add(

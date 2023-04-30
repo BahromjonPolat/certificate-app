@@ -13,7 +13,7 @@
 
 import 'dart:convert';
 
-import 'package:certificate/core/models/response/app_pref.dart';
+import 'package:certificate/core/hive/app_pref.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 
@@ -21,14 +21,11 @@ import '../core/errors/failure.dart';
 import '../core/models/response/response_data.dart';
 
 class ApiService {
-  final String _baseUrl = 'http://localhost:8080/api';
+  final String _baseUrl = 'http://192.168.43.42:8080/api';
   // final String _baseUrl = 'http://192.168.43.42:8080/api';
   String get baseUrl => _baseUrl;
 
-  Future<Either<ServerFailure, ApiResponse>> get(
-    String path, {
-    Object? body,
-  }) async {
+  Future<Either<ServerFailure, ApiResponse>> get(String path) async {
     try {
       Uri url = Uri.parse('$_baseUrl$path');
 

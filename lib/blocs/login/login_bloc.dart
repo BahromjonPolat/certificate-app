@@ -14,7 +14,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:certificate/core/models/response/app_pref.dart';
+import 'package:certificate/core/hive/app_pref.dart';
 import 'package:certificate/core/models/response/response_data.dart';
 import 'package:certificate/services/api_requests.dart';
 import 'package:common_models/common_models.dart';
