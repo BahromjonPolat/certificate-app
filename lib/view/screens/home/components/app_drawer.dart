@@ -15,6 +15,7 @@ import 'package:certificate/core/constants/app_strings.dart';
 import 'package:certificate/core/core.dart';
 import 'package:certificate/routing/routing.dart';
 import 'package:certificate/view/screens/home/components/app_drawer_item.dart';
+import 'package:certificate/view/widgets/app_dialog.dart';
 import 'package:common_models/common_models.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -64,13 +65,21 @@ class AppDrawer extends StatelessWidget {
             icon: Icons.logout_outlined,
             title: AppStrings.logout,
             onTap: () async {
-              await Future.wait([
-                HiveBoxes.branchBox.clear(),
-                HiveBoxes.certificateBox.clear(),
-                HiveBoxes.employeeBox.clear(),
-              ]);
+              AppDialog dialog = AppDialog(context);
 
-              AppNavigator.pushNamedAndRemoveUntil(RouteNames.login);
+              dialog.show(
+                title: AppStrings.logout,
+                content: AppStrings.reallyWantToExit,
+                onYesPressed: () async {
+                  await Future.wait([
+                    HiveBoxes.branchBox.clear(),
+                    HiveBoxes.certificateBox.clear(),
+                    HiveBoxes.employeeBox.clear(),
+                  ]);
+
+                  AppNavigator.pushNamedAndRemoveUntil(RouteNames.login);
+                },
+              );
             },
           ),
         ],

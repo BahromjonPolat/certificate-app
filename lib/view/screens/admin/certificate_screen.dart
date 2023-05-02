@@ -32,14 +32,19 @@ class CertificateScreen extends StatelessWidget {
           child: FloatingActionButton(
             child: const Icon(Icons.add),
             onPressed: () {
-              AppNavigator.pushNamed(RouteNames.createCertificate)
-                  .then((value) {
-                if (value != null) {}
-              });
+              AppNavigator.pushNamed(RouteNames.createCertificate);
             },
           ),
         ),
-        appBar: AppBar(title: const Text('Certificates')),
+        appBar: AppBar(
+          title: const Text(AppStrings.vouchers),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.download_outlined),
+            ).onVisible(visible: AppPref.employee.role == 'admin'),
+          ],
+        ),
         body: BlocConsumer<CertificateBloc, CertificateState>(
           builder: (context, state) {
             return state.when(

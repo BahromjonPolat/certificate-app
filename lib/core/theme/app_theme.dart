@@ -50,6 +50,9 @@ class AppTheme {
             borderRadius: BorderRadius.circular(12.0),
           ),
         ),
+        dialogTheme: const DialogTheme(
+          actionsPadding: EdgeInsets.symmetric(horizontal: 16.0),
+        ),
       );
   static final OutlineInputBorder _inputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(14.0),

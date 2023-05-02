@@ -20,9 +20,12 @@ class AppStrings {
   static const String employees = 'Xodimlar';
   static const String branches = 'Filiallar';
   static const String you = 'Siz';
-  static const String addNewCoucher = 'Yangi vaucher qo\'shish';
+  static const String yes = 'Ha';
+  static const String no = "Yo'q";
+  static const String addNewVoucher = 'Yangi vaucher qo\'shish';
   static const String enterPrice = 'Narxni kiriting';
   static const String enterFrom = 'Boshlanish muddatini kiriting';
   static const String enterTo = 'Tugash muddatini kiriting';
   static const String add = "Qo'shish";
+  static const String reallyWantToExit = 'Chindan ham chiqishni xohlaysizmi?';
 }

@@ -14,7 +14,6 @@
 import 'package:certificate/blocs/add_cert/add_cert_bloc.dart';
 import 'package:certificate/core/core.dart';
 import 'package:certificate/routing/routing.dart';
-import 'package:certificate/view/widgets/calendar_widget.dart';
 import 'package:certificate/view/widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +44,7 @@ class _CreateCertificateScreenState extends State<CreateCertificateScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Add new certificate')),
+      appBar: AppBar(title: const Text(AppStrings.addNewVoucher)),
       body: BlocConsumer<AddCertBloc, AddCertState>(
         listenWhen: (previous, current) => current.failureOrSuccess.isSome(),
         listener: (context, state) {
@@ -76,7 +75,7 @@ class _CreateCertificateScreenState extends State<CreateCertificateScreen> {
                     controller: _priceController,
                     icon: CupertinoIcons.money_dollar,
                     formatters: [FilteringTextInputFormatter.digitsOnly],
-                    hint: 'Enter price',
+                    hint: AppStrings.enterPrice,
                     keyboardType: TextInputType.number,
                     validator: AppValidators.general,
                   ),
@@ -85,7 +84,7 @@ class _CreateCertificateScreenState extends State<CreateCertificateScreen> {
                     controller: _fromController,
                     icon: CupertinoIcons.calendar,
                     validator: AppValidators.general,
-                    hint: 'Enter from',
+                    hint: AppStrings.enterFrom,
                     readOnly: true,
                     onTap: () {
                       appCalendar.show(
@@ -111,7 +110,7 @@ class _CreateCertificateScreenState extends State<CreateCertificateScreen> {
                   AppInputField.withPrefix(
                     controller: _toController,
                     icon: CupertinoIcons.calendar,
-                    hint: 'Enter to',
+                    hint: AppStrings.enterTo,
                     readOnly: true,
                     validator: AppValidators.general,
                     onTap: () {
@@ -137,7 +136,7 @@ class _CreateCertificateScreenState extends State<CreateCertificateScreen> {
                   const SizedBox(height: 24.0),
                   PrimaryButton(
                     isLoading: state.isLoading,
-                    label: 'Add',
+                    label: AppStrings.add,
                     onPressed: () {
                       FormState? formState = _formKey.currentState;
                       bool isValid = formState?.validate() ?? false;
