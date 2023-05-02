@@ -11,6 +11,7 @@
 
 */
 
+import 'package:certificate/core/core.dart';
 import 'package:certificate/routing/routing.dart';
 import 'package:certificate/view/widgets/dialog_content.dart';
 import 'package:flutter/material.dart';
@@ -23,15 +24,18 @@ class AppDialog {
     String title = '',
     String content = '',
     VoidCallback? onYesPressed,
+    String noText = AppStrings.no,
+    bool showYes = true,
   }) async {
     showDialog(
       context: _context,
       builder: (context) {
         return DialogContent(
+          noText: noText,
           content: content,
-          onNoPressed: AppNavigator.pop,
           onYesPressed: onYesPressed,
           title: title,
+          showYes: showYes,
         );
       },
     );

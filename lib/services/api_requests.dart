@@ -71,6 +71,10 @@ class ApiRequests extends ApiService {
     return await get('/certificate/get');
   }
 
+  Future<Either<ServerFailure, ApiResponse>> downloadCertificate() async {
+    return await get('/certificate/get/download');
+  }
+
   Future<Either<ServerFailure, ApiResponse>> createBranch({
     required String name,
     required String address,

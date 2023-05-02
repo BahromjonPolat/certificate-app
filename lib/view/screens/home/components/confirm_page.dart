@@ -33,17 +33,24 @@ class ConfirmPage extends StatelessWidget {
       child: BlocConsumer<ConfirmBloc, ConfirmState>(
         listenWhen: (previous, current) => current.failureOrSuccess.isSome(),
         listener: (context, state) {
-          AppSnackbar snackbar = AppSnackbar(context);
+          AppDialog dialog = AppDialog(context);
           state.failureOrSuccess.map((failureOrSuccess) {
             failureOrSuccess.fold(
               (l) {
-                snackbar.show(
-                  isError: true,
+                dialog.show(
+                  title: 'Xatolik',
                   content: l.getMessage(),
+                  showYes: false,
+                  noText: AppStrings.back,
                 );
               },
               (r) {
-                snackbar.show(content: r.message);
+                dialog.show(
+                  title: 'Muvaffaqiyatli',
+                  content: "Vuacher muvaffaqiyatli tasdiqlandi",
+                  showYes: false,
+                  noText: AppStrings.back,
+                );
                 _uniqueCodeController.clear();
               },
             );
@@ -63,7 +70,8 @@ class ConfirmPage extends StatelessWidget {
                     controller: _uniqueCodeController,
                     icon: CupertinoIcons.ticket,
                     action: TextInputAction.done,
-                    hint: 'Vaucher kodini kiriting!',
+                    hint: AppStrings.enterVoucherCode,
+                    validator: AppValidators.general,
                     suffixIcon: state.hasFound
                         ? const Icon(
                             Icons.check,
@@ -77,7 +85,7 @@ class ConfirmPage extends StatelessWidget {
                   const SizedBox(height: 24.0),
                   PrimaryButton(
                     isLoading: state.isLoading,
-                    label: 'Confirm',
+                    label: AppStrings.confirm,
                     onPressed: () {
                       FormState? formState = _formKey.currentState;
                       bool isValid = formState?.validate() ?? false;

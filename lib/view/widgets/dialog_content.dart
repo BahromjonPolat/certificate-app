@@ -11,20 +11,23 @@
 
 */
 import 'package:certificate/core/core.dart';
+import 'package:certificate/routing/routing.dart';
 import 'package:flutter/material.dart';
 
 class DialogContent extends StatelessWidget {
   final String title;
   final String content;
   final VoidCallback? onYesPressed;
-  final VoidCallback? onNoPressed;
+  final String? noText;
+  final bool showYes;
 
   const DialogContent({
     super.key,
     required this.content,
-    required this.onNoPressed,
     required this.onYesPressed,
     required this.title,
+    required this.noText,
+    required this.showYes,
   });
 
   @override
@@ -34,13 +37,13 @@ class DialogContent extends StatelessWidget {
       content: Text(content),
       actions: [
         TextButton(
-          onPressed: onNoPressed,
-          child: const Text(AppStrings.no),
+          onPressed: AppNavigator.pop,
+          child: Text(noText ?? AppStrings.no),
         ),
         TextButton(
           onPressed: onYesPressed,
           child: const Text(AppStrings.yes),
-        ),
+        ).onVisible(visible: showYes),
       ],
     );
   }

@@ -11,16 +11,18 @@
 
 */
 
+import 'package:certificate/core/core.dart';
+
 class AppValidators {
   static String? phone(String? value) {
     if (value == null) {
-      return "Please, Fill the field";
+      return AppStrings.pleaseFillField;
     }
 
     if (value.isEmpty) {
-      return "Please, Fill the field";
+      return AppStrings.pleaseFillField;
     } else if (!RegExp(r'^\+998\d{9}$').hasMatch(value)) {
-      return "Input valid phone";
+      return "To'g'ri raqam kiriting!";
     }
     return null;
   }
@@ -40,11 +42,11 @@ class AppValidators {
 
   static String? general(String? value) {
     if (value == null) {
-      return "Please, Fill the field";
+      return AppStrings.pleaseFillField;
     }
 
     if (value.trim().isEmpty) {
-      return "Please, Fill the field";
+      return AppStrings.pleaseFillField;
     }
     return null;
   }
