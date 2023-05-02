@@ -84,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     // ! Phone
                     AppInputField.withPrefix(
-                      assetIcon: Icons.phone_outlined,
+                      icon: Icons.phone_outlined,
                       controller: _phoneController,
                       hint: "Enter Phone",
                       keyboardType: TextInputType.phone,
@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     // ! Password
                     AppInputField.withPrefix(
-                      assetIcon: Icons.lock_outline,
+                      icon: Icons.lock_outline,
                       controller: _passwordController,
                       hint: "Enter Password",
                       keyboardType: TextInputType.visiblePassword,

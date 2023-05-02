@@ -74,7 +74,7 @@ class _CreateCertificateScreenState extends State<CreateCertificateScreen> {
                 children: [
                   AppInputField.withPrefix(
                     controller: _priceController,
-                    assetIcon: CupertinoIcons.money_dollar,
+                    icon: CupertinoIcons.money_dollar,
                     formatters: [FilteringTextInputFormatter.digitsOnly],
                     hint: 'Enter price',
                     keyboardType: TextInputType.number,
@@ -83,7 +83,7 @@ class _CreateCertificateScreenState extends State<CreateCertificateScreen> {
                   const SizedBox(height: 12.0),
                   AppInputField.withPrefix(
                     controller: _fromController,
-                    assetIcon: CupertinoIcons.calendar,
+                    icon: CupertinoIcons.calendar,
                     validator: AppValidators.general,
                     hint: 'Enter from',
                     readOnly: true,
@@ -110,7 +110,7 @@ class _CreateCertificateScreenState extends State<CreateCertificateScreen> {
                   const SizedBox(height: 12.0),
                   AppInputField.withPrefix(
                     controller: _toController,
-                    assetIcon: CupertinoIcons.calendar,
+                    icon: CupertinoIcons.calendar,
                     hint: 'Enter to',
                     readOnly: true,
                     validator: AppValidators.general,

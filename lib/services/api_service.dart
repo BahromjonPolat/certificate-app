@@ -22,7 +22,7 @@ import '../core/errors/failure.dart';
 import '../core/models/response/response_data.dart';
 
 class ApiService {
-  final String _baseUrl = 'http://10.0.0.2:8080/api';
+  final String _baseUrl = 'http://192.168.43.42:8080/api';
   // final String _baseUrl = 'http://192.168.43.42:8080/api';
   String get baseUrl => _baseUrl;
 

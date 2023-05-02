@@ -27,10 +27,11 @@ class AppInputField extends StatelessWidget {
   int maxLines;
   Color? fillColor;
   FormFieldValidator<String>? validator;
-  IconData assetIcon = Icons.abc;
+  IconData icon = Icons.abc;
   bool obscureText;
   bool _withPrefix = false;
   FocusNode? focusNode;
+  ValueChanged<String>? onChanged;
 
   AppInputField({
     super.key,
@@ -48,10 +49,11 @@ class AppInputField extends StatelessWidget {
     this.fillColor,
     this.obscureText = false,
     this.focusNode,
+    this.onChanged,
   });
 
   AppInputField.withPrefix({
-    required this.assetIcon,
+    required this.icon,
     super.key,
     this.controller,
     this.hint,
@@ -67,6 +69,7 @@ class AppInputField extends StatelessWidget {
     this.fillColor,
     this.obscureText = false,
     this.focusNode,
+    this.onChanged,
   }) {
     _withPrefix = true;
   }
@@ -85,12 +88,13 @@ class AppInputField extends StatelessWidget {
       maxLines: maxLines,
       obscureText: obscureText,
       focusNode: focusNode,
+      onChanged: onChanged,
       decoration: InputDecoration(
         hintText: hint,
         fillColor: fillColor,
         filled: true,
         suffixIcon: suffixIcon,
-        prefixIcon: _withPrefix ? Icon(assetIcon) : null,
+        prefixIcon: _withPrefix ? Icon(icon) : null,
       ),
     );
   }

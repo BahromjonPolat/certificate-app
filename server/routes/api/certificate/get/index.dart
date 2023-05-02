@@ -21,13 +21,22 @@ Future<Response> onRequest(RequestContext context) async {
   final status = params['status'];
 
   final certificateBox = HiveBoxes.certificateBox;
-  var certificates = <CertificateModel>[];
+  final employee = await context.read<Future<Employee>>();
+  final role = employee.role;
+
+  var certificates = const Iterable<CertificateModel>.empty();
   if (status == 'active') {
-    certificates = certificateBox.values.where((cert) => cert.enable).toList();
+    certificates = certificateBox.values.where((cert) => cert.enable);
   } else if (status == 'inactive') {
-    certificates = certificateBox.values.where((cert) => !cert.enable).toList();
+    certificates = certificateBox.values.where((cert) => !cert.enable);
   } else {
-    certificates = certificateBox.values.toList();
+    certificates = certificateBox.values;
+  }
+
+  if (role != 'admin') {
+    certificates = certificates.where(
+      (element) => element.confirmedEmployeeId == employee.id,
+    );
   }
 
   return AppResponse.success(

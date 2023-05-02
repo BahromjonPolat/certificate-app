@@ -14,7 +14,6 @@
 import 'package:certificate/blocs/branch/branch_bloc.dart';
 import 'package:certificate/blocs/certificate/certificate_bloc.dart';
 import 'package:certificate/core/core.dart';
-import 'package:certificate/view/screens/admin/admin.dart';
 import 'package:certificate/view/screens/home/components/app_drawer.dart';
 import 'package:certificate/view/screens/home/components/components.dart';
 import 'package:common_models/common_models.dart';
@@ -29,20 +28,22 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Employee employee = AppPref.employee;
+  late ConfirmPage confirmPage;
   @override
   void initState() {
     super.initState();
 
     CertificateBloc().add(const CertificateEvent.started());
     BranchBloc().add(const BranchEvent.started());
+    confirmPage = ConfirmPage(employee: employee);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home Screen')),
+      appBar: AppBar(title: const Text('Bosh sahifa')),
       drawer: AppDrawer(employee: employee),
-      body: ConfirmPage(employee: employee),
+      body: confirmPage,
     );
   }
 }

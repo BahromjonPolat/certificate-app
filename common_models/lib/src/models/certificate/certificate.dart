@@ -12,9 +12,7 @@
 */
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:gsheets/gsheets.dart';
 import 'package:hive/hive.dart';
-import 'package:common_models/src/date_formatter_ext.dart';
 part 'certificate.g.dart';
 part 'certificate.freezed.dart';
 
@@ -40,14 +38,4 @@ class CertificateModel with _$CertificateModel {
 
   factory CertificateModel.fromJson(Map<String, dynamic> json) =>
       _$CertificateModelFromJson(json);
-
-  factory CertificateModel.fromSheet(List<Cell> cells) {
-    return CertificateModel(
-      id: cells[0].value,
-      price: num.parse(cells[1].value),
-      from: cells[2].value.convertStringToDate(),
-      to: cells[3].value.convertStringToDate(),
-      enable: cells[4].value == 'true',
-    );
-  }
 }

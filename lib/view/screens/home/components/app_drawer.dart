@@ -11,6 +11,8 @@
 
 */
 
+import 'package:certificate/core/constants/app_strings.dart';
+import 'package:certificate/core/core.dart';
 import 'package:certificate/routing/routing.dart';
 import 'package:certificate/view/screens/home/components/app_drawer_item.dart';
 import 'package:common_models/common_models.dart';
@@ -38,29 +40,29 @@ class AppDrawer extends StatelessWidget {
           ),
           AppDrawerItem(
             icon: CupertinoIcons.ticket,
-            title: 'Certificates',
+            title: AppStrings.vouchers,
             onTap: () {
               AppNavigator.pushNamed(RouteNames.certificate);
             },
           ),
           AppDrawerItem(
             icon: Icons.person_outline,
-            title: 'Employees',
+            title: AppStrings.employees,
             onTap: () {
               AppNavigator.pushNamed(RouteNames.employee);
             },
-          ),
+          ).onVisible(visible: employee.role == 'admin'),
           AppDrawerItem(
             icon: Icons.shopping_bag_outlined,
-            title: 'Branches',
+            title: AppStrings.branches,
             onTap: () {
               AppNavigator.pushNamed(RouteNames.branches);
             },
-          ),
+          ).onVisible(visible: employee.role == 'admin'),
           const Spacer(),
           AppDrawerItem(
             icon: Icons.logout_outlined,
-            title: 'Logout',
+            title: AppStrings.logout,
             onTap: () async {
               await Future.wait([
                 HiveBoxes.branchBox.clear(),

@@ -56,7 +56,7 @@ class AppNavigator {
     );
   }
 
-  static void pop<T>([T? result]) => navigatorKey.currentState?.pop(result);
+  static void pop<T>([T? result]) => navigatorKey.currentState?.pop<T>(result);
 
   static void checkAndPop() {
     if (navigatorKey.currentState!.canPop()) {

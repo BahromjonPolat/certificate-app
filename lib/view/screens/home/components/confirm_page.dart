@@ -14,6 +14,7 @@
 import 'package:certificate/core/core.dart';
 import 'package:certificate/view/widgets/widgets.dart';
 import 'package:common_models/common_models.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -49,6 +50,8 @@ class ConfirmPage extends StatelessWidget {
           });
         },
         builder: (context, state) {
+          ConfirmBloc confirmBloc = BlocProvider.of(context);
+
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: Form(
@@ -56,9 +59,20 @@ class ConfirmPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AutocompleteWidget(
+                  AppInputField.withPrefix(
                     controller: _uniqueCodeController,
-                    certificates: HiveBoxes.certificateBox.values,
+                    icon: CupertinoIcons.ticket,
+                    action: TextInputAction.done,
+                    hint: 'Vaucher kodini kiriting!',
+                    suffixIcon: state.hasFound
+                        ? const Icon(
+                            Icons.check,
+                            color: Colors.green,
+                          )
+                        : null,
+                    onChanged: (value) {
+                      confirmBloc.add(ConfirmEvent.idChanged(value));
+                    },
                   ),
                   const SizedBox(height: 24.0),
                   PrimaryButton(
@@ -69,14 +83,9 @@ class ConfirmPage extends StatelessWidget {
                       bool isValid = formState?.validate() ?? false;
                       if (!isValid) return;
 
-                      ConfirmBloc confirmBloc = BlocProvider.of(context);
-                      String id = _uniqueCodeController.text.trim();
                       String branchId = employee.branchId;
                       confirmBloc.add(
-                        ConfirmEvent.dataEntered(
-                          certificateId: id,
-                          branchId: branchId,
-                        ),
+                        ConfirmEvent.dataEntered(branchId: branchId),
                       );
                       confirmBloc.add(const ConfirmEvent.confirmed());
                     },

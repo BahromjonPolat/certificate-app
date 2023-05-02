@@ -7,11 +7,13 @@ class ConfirmState with _$ConfirmState {
     required String branchId,
     required bool isLoading,
     required Option<Either<ServerFailure, ApiResponse>> failureOrSuccess,
+    required bool hasFound,
   }) = _ConfirmState;
   factory ConfirmState.initial() => ConfirmState(
         certificateId: '',
         branchId: '',
         failureOrSuccess: none(),
         isLoading: false,
+        hasFound: false,
       );
 }
