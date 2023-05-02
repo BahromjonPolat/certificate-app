@@ -36,6 +36,9 @@ class AppFormatter {
       case 'yyyy-mm-dd':
         formatted = '$year-$month-$day';
         break;
+      case 'yyyy.mm.dd':
+        formatted = '$year.$month.$day';
+        break;
 
       case 'dd/mm/yyyy':
         formatted = '$day/$month/$year';

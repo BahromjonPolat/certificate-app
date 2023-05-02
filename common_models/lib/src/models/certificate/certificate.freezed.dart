@@ -64,6 +64,18 @@ mixin _$CertificateModel {
   int get to => throw _privateConstructorUsedError;
   @HiveField(10)
   set to(int value) => throw _privateConstructorUsedError;
+  @HiveField(11)
+  String? get branch => throw _privateConstructorUsedError;
+  @HiveField(11)
+  set branch(String? value) => throw _privateConstructorUsedError;
+  @HiveField(12)
+  String? get employee => throw _privateConstructorUsedError;
+  @HiveField(12)
+  set employee(String? value) => throw _privateConstructorUsedError;
+  @HiveField(13)
+  String? get createdByName => throw _privateConstructorUsedError;
+  @HiveField(13)
+  set createdByName(String? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -88,7 +100,10 @@ abstract class $CertificateModelCopyWith<$Res> {
       @HiveField(7) String createdBy,
       @HiveField(8) int createdAt,
       @HiveField(9) int from,
-      @HiveField(10) int to});
+      @HiveField(10) int to,
+      @HiveField(11) String? branch,
+      @HiveField(12) String? employee,
+      @HiveField(13) String? createdByName});
 }
 
 /// @nodoc
@@ -115,6 +130,9 @@ class _$CertificateModelCopyWithImpl<$Res, $Val extends CertificateModel>
     Object? createdAt = null,
     Object? from = null,
     Object? to = null,
+    Object? branch = freezed,
+    Object? employee = freezed,
+    Object? createdByName = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -161,6 +179,18 @@ class _$CertificateModelCopyWithImpl<$Res, $Val extends CertificateModel>
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as int,
+      branch: freezed == branch
+          ? _value.branch
+          : branch // ignore: cast_nullable_to_non_nullable
+              as String?,
+      employee: freezed == employee
+          ? _value.employee
+          : employee // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdByName: freezed == createdByName
+          ? _value.createdByName
+          : createdByName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -184,7 +214,10 @@ abstract class _$$_CertificateModelCopyWith<$Res>
       @HiveField(7) String createdBy,
       @HiveField(8) int createdAt,
       @HiveField(9) int from,
-      @HiveField(10) int to});
+      @HiveField(10) int to,
+      @HiveField(11) String? branch,
+      @HiveField(12) String? employee,
+      @HiveField(13) String? createdByName});
 }
 
 /// @nodoc
@@ -209,6 +242,9 @@ class __$$_CertificateModelCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? from = null,
     Object? to = null,
+    Object? branch = freezed,
+    Object? employee = freezed,
+    Object? createdByName = freezed,
   }) {
     return _then(_$_CertificateModel(
       id: null == id
@@ -255,6 +291,18 @@ class __$$_CertificateModelCopyWithImpl<$Res>
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as int,
+      branch: freezed == branch
+          ? _value.branch
+          : branch // ignore: cast_nullable_to_non_nullable
+              as String?,
+      employee: freezed == employee
+          ? _value.employee
+          : employee // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdByName: freezed == createdByName
+          ? _value.createdByName
+          : createdByName // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -273,7 +321,10 @@ class _$_CertificateModel implements _CertificateModel {
       @HiveField(7) this.createdBy = '',
       @HiveField(8) this.createdAt = 0,
       @HiveField(9) this.from = 0,
-      @HiveField(10) this.to = 0});
+      @HiveField(10) this.to = 0,
+      @HiveField(11) this.branch = '-',
+      @HiveField(12) this.employee = '-',
+      @HiveField(13) this.createdByName = ''});
 
   factory _$_CertificateModel.fromJson(Map<String, dynamic> json) =>
       _$$_CertificateModelFromJson(json);
@@ -322,10 +373,22 @@ class _$_CertificateModel implements _CertificateModel {
   @JsonKey()
   @HiveField(10)
   int to;
+  @override
+  @JsonKey()
+  @HiveField(11)
+  String? branch;
+  @override
+  @JsonKey()
+  @HiveField(12)
+  String? employee;
+  @override
+  @JsonKey()
+  @HiveField(13)
+  String? createdByName;
 
   @override
   String toString() {
-    return 'CertificateModel(id: $id, uniqueCode: $uniqueCode, price: $price, enable: $enable, usedDate: $usedDate, confirmedEmployeeId: $confirmedEmployeeId, confirmedBranchId: $confirmedBranchId, createdBy: $createdBy, createdAt: $createdAt, from: $from, to: $to)';
+    return 'CertificateModel(id: $id, uniqueCode: $uniqueCode, price: $price, enable: $enable, usedDate: $usedDate, confirmedEmployeeId: $confirmedEmployeeId, confirmedBranchId: $confirmedBranchId, createdBy: $createdBy, createdAt: $createdAt, from: $from, to: $to, branch: $branch, employee: $employee, createdByName: $createdByName)';
   }
 
   @JsonKey(ignore: true)
@@ -354,7 +417,10 @@ abstract class _CertificateModel implements CertificateModel {
       @HiveField(7) String createdBy,
       @HiveField(8) int createdAt,
       @HiveField(9) int from,
-      @HiveField(10) int to}) = _$_CertificateModel;
+      @HiveField(10) int to,
+      @HiveField(11) String? branch,
+      @HiveField(12) String? employee,
+      @HiveField(13) String? createdByName}) = _$_CertificateModel;
 
   factory _CertificateModel.fromJson(Map<String, dynamic> json) =
       _$_CertificateModel.fromJson;
@@ -414,6 +480,21 @@ abstract class _CertificateModel implements CertificateModel {
   int get to;
   @HiveField(10)
   set to(int value);
+  @override
+  @HiveField(11)
+  String? get branch;
+  @HiveField(11)
+  set branch(String? value);
+  @override
+  @HiveField(12)
+  String? get employee;
+  @HiveField(12)
+  set employee(String? value);
+  @override
+  @HiveField(13)
+  String? get createdByName;
+  @HiveField(13)
+  set createdByName(String? value);
   @override
   @JsonKey(ignore: true)
   _$$_CertificateModelCopyWith<_$_CertificateModel> get copyWith =>

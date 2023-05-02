@@ -13,7 +13,10 @@
 
 import 'dart:convert';
 
+import 'package:common_models/common_models.dart';
 import 'package:gsheets/gsheets.dart';
+
+import '../components/app_format.dart';
 
 class SheetsService {
   SheetsService._();
@@ -21,7 +24,7 @@ class SheetsService {
   static final SheetsService instance = SheetsService._();
 
   late Worksheet _worksheet;
-  Worksheet get sheet => _worksheet;
+  // Worksheet get sheet => _worksheet;
 
   Future<void> init({
     required String credentials,
@@ -33,5 +36,27 @@ class SheetsService {
     var sheet = spreadsheet.worksheetByTitle('vouchers');
     sheet ??= await spreadsheet.addWorksheet('vouchers');
     _worksheet = sheet;
+  }
+
+  void insertCertificate(CertificateModel certificate) async {
+    await _worksheet.values.insertRowByKey(
+      certificate.id,
+      _convertCertToSheets(certificate),
+    );
+  }
+
+  List<dynamic> _convertCertToSheets(CertificateModel certificate) {
+    const pattern = 'yyyy.mm.dd';
+    return [
+      certificate.price,
+      AppFormatter.formatDateFromMills(certificate.from, pattern: pattern),
+      AppFormatter.formatDateFromMills(certificate.to, pattern: pattern),
+      certificate.enable,
+      AppFormatter.formatDateFromMills(certificate.createdAt, pattern: pattern),
+      certificate.createdByName,
+      AppFormatter.formatDateFromMills(certificate.usedDate),
+      certificate.branch,
+      certificate.employee,
+    ];
   }
 }

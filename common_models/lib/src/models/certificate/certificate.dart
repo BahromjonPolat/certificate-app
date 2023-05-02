@@ -12,8 +12,9 @@
 */
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:gsheets/gsheets.dart';
 import 'package:hive/hive.dart';
-
+import 'package:common_models/src/date_formatter_ext.dart';
 part 'certificate.g.dart';
 part 'certificate.freezed.dart';
 
@@ -32,8 +33,21 @@ class CertificateModel with _$CertificateModel {
     @HiveField(8) @Default(0) int createdAt,
     @HiveField(9) @Default(0) int from,
     @HiveField(10) @Default(0) int to,
+    @HiveField(11) @Default('-') String? branch,
+    @HiveField(12) @Default('-') String? employee,
+    @HiveField(13) @Default('') String? createdByName,
   }) = _CertificateModel;
 
   factory CertificateModel.fromJson(Map<String, dynamic> json) =>
       _$CertificateModelFromJson(json);
+
+  factory CertificateModel.fromSheet(List<Cell> cells) {
+    return CertificateModel(
+      id: cells[0].value,
+      price: num.parse(cells[1].value),
+      from: cells[2].value.convertStringToDate(),
+      to: cells[3].value.convertStringToDate(),
+      enable: cells[4].value == 'true',
+    );
+  }
 }

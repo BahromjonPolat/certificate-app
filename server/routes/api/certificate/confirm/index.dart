@@ -17,6 +17,8 @@ import 'package:common_models/common_models.dart';
 import 'package:dart_frog/dart_frog.dart';
 
 import '../../../../src/components/responses.dart';
+import '../../../../src/service/sheets_service.dart';
+import '../../../../src/service/telegram_service.dart';
 
 Future<Response> onRequest(RequestContext context) async {
   final body = await context.request.body();
@@ -47,9 +49,13 @@ Future<Response> onRequest(RequestContext context) async {
     confirmedEmployeeId: employee.id,
     confirmedBranchId: branch.id,
     enable: false,
+    employee: employee.name,
+    branch: '${branch.name}, ${branch.address}',
   );
 
   await box.put(confirmedCert.id, confirmedCert);
+  SheetsService.instance.insertCertificate(confirmedCert);
+  TelegramService.instance.sendMessage(confirmedCert);
 
   return AppResponse.success(body: confirmedCert.toJson());
 }

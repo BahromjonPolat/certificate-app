@@ -17,6 +17,8 @@ import 'package:dart_frog/dart_frog.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../src/components/responses.dart';
+import '../../../../src/service/sheets_service.dart';
+import '../../../../src/service/telegram_service.dart';
 import '../../../../src/validators/certificate_validator.dart';
 
 Future<Response> onRequest(RequestContext context) async {
@@ -32,8 +34,8 @@ Future<Response> onRequest(RequestContext context) async {
   final from = json['from'] as int;
   final to = json['to'] as int;
 
-  if (from < to) {
-    return AppResponse.badRequest(message: 'from must be greater then to');
+  if (from > to) {
+    return AppResponse.badRequest(message: 'to must be greater then from');
   }
   final employee = await context.read<Future<Employee>>();
   final id = const Uuid().v4();
@@ -47,10 +49,13 @@ Future<Response> onRequest(RequestContext context) async {
     createdBy: employee.id,
     createdAt: DateTime.now().millisecondsSinceEpoch,
     enable: true,
+    createdByName: employee.name,
   );
 
   final box = HiveBoxes.certificateBox;
   await box.put(id, certificate);
+  SheetsService.instance.insertCertificate(certificate);
+  TelegramService.instance.sendMessage(certificate);
 
   return AppResponse.success(body: certificate.toJson());
 }

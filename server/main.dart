@@ -6,6 +6,7 @@ import 'package:dotenv/dotenv.dart';
 
 import 'src/components/jwt_service.dart';
 import 'src/service/sheets_service.dart';
+import 'src/service/telegram_service.dart';
 
 Future<HttpServer> run(
   Handler handler,
@@ -16,6 +17,8 @@ Future<HttpServer> run(
   final jwtSecret = env['JWT_SECRET'];
   final googleServiceAccountJson = env['GOOGLE_SERVICE_ACCOUNT_JSON_BASE64'];
   final spreadsheetId = env['SPREADSHEET'];
+  final telegramBotToken = env['TELEGRAM_BOT_TOKEN'];
+  final telegramChatId = env['TELEGRAM_CHAT_ID'];
 
   if (jwtSecret == null) {
     throw Exception('JWT secret key cannot be null');
@@ -29,8 +32,20 @@ Future<HttpServer> run(
     throw Exception('Spreadsheet cannot be null');
   }
 
+  if (googleServiceAccountJson == telegramBotToken) {
+    throw Exception('Telegram bot token cannot be null');
+  }
+
+  if (spreadsheetId == telegramChatId) {
+    throw Exception('Telegram chat id cannot be null');
+  }
+
   await HiveService.initialize('./hive');
   JwtService.instance.init(issuer: 'Hilol nashr', secretKey: jwtSecret);
+  TelegramService.instance.init(
+    botToken: telegramBotToken,
+    chatId: telegramChatId,
+  );
   await SheetsService.instance.init(
     credentials: googleServiceAccountJson,
     spreadsheetId: spreadsheetId,
